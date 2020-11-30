@@ -8,17 +8,14 @@ use GuzzleHttp\Client;
 class PokemonsController extends Controller
 {
     public function buscar(){
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'https://pokeapi.co/api/v2/',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
+        $client = new Client(['base_uri' => env('SIMPLUS_API_URL')]);
+        $data = $client->request('GET', 'pokemon', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ]
         ]);
+        $response = json_decode($data->getBody(), true);
 
-
-        $response = $client->request('GET', 'pokemon/ditto');
-
-        echo "<pre>";
-        print_r($response->getBody());
+        return view('pokemon.buscar')->with('data', $response['results']);
     }
 }
