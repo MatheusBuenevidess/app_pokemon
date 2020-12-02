@@ -15,6 +15,7 @@ class PokemonsController extends Controller
             ]
         ]);
         $response = json_decode($data->getBody(), true);
-        return $response;
+
+        return view('pokemon.buscar')->with('data', $response);
     }
 }
