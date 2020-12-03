@@ -29,6 +29,6 @@ class PokemonsController extends Controller
         ]);
         $response = json_decode($data->getBody(), true);
 
-        return dd($response);
+        return $response;
     }
 }
