@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('pokemon/buscar', 'PokemonsController@buscar');
 
-Route::get('pokemon/{id}', "PokemonsController@pesquisa");
+Route::get('pokemon/buscar/{id}', "PokemonsController@pesquisa");
+

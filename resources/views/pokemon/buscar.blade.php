@@ -10,10 +10,16 @@
     <link href="../../css/app.css" rel="stylesheet">
 </head>
 <body>
+
+    @foreach ($data as $item)
+        <p>
+            {{$item['name']}}
+        </p>
+    @endforeach
+
     <div id="app"></div>
 <!-- versão de desenvolvimento, inclui avisos úteis no console  -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
     <script>
         new Vue({
             el: '#app',
@@ -36,12 +42,19 @@
             data(){
                 return{
                     results:[
-                        {
-
-                        }
+                        
                     ]
                 }
-            }
+            },
+            mounted() {
+                this.dataApi();
+            },
+            methods: {
+                dataApi(){
+                    // this.results = data;
+                    // console.log();
+                }
+            },
         })
     </script>    
 </body>
